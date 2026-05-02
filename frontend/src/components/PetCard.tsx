@@ -18,10 +18,11 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
     <Card
       sx={{
         height: "100%",
-        transition: "transform 180ms ease, box-shadow 180ms ease",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         "&:hover": {
-          transform: "translateY(-4px)",
-          boxShadow: "0 16px 32px rgba(30, 64, 175, 0.18)",
+          transform: "translateY(-8px)",
+          boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+          borderColor: "primary.light",
         },
       }}
     >
@@ -31,30 +32,33 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
           image={pet.imageUrl}
           alt={pet.name}
           sx={{
-            aspectRatio: "1 / 1",
+            aspectRatio: "16 / 10",
             objectFit: "cover",
-            filter: pet.availability ? "none" : "grayscale(100%)"
+            filter: pet.availability ? "none" : "grayscale(100%) brightness(0.8)"
           }}
           onError={(e: any) => {
             e.target.src = "https://via.placeholder.com/800x800?text=No+Image+Available";
           }}
         />
-        <CardContent>
-          <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-            <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ p: 3 }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center" mb={1.5}>
+            <Typography variant="h5" component="div" sx={{ color: "primary.dark" }}>
               {pet.name}
             </Typography>
             <Chip
               label={pet.availability ? "Available" : "Adopted"}
               size="small"
               sx={{
-                fontWeight: 600,
-                color: pet.availability ? "#1e3a8a" : "#334155",
-                backgroundColor: pet.availability ? "#dbeafe" : "#e2e8f0",
+                fontWeight: 700,
+                fontSize: "0.7rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.025em",
+                color: pet.availability ? "#ffffff" : "#475569",
+                backgroundColor: pet.availability ? "primary.main" : "#e2e8f0",
               }}
             />
           </Box>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
             {pet.type} • {pet.breed}
           </Typography>
         </CardContent>

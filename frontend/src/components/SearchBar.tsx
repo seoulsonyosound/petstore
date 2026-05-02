@@ -36,8 +36,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       sx={{
         mb: 1,
         "& .MuiOutlinedInput-root": {
-          borderRadius: 3,
-          backgroundColor: "#ffffff",
+          borderRadius: 4,
+          backgroundColor: "rgba(255, 255, 255, 0.6)",
+          transition: "all 0.2s ease",
+          "&:hover": {
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+          },
+          "&.Mui-focused": {
+            backgroundColor: "#ffffff",
+            boxShadow: "0 0 0 4px rgba(30, 64, 175, 0.1)",
+          }
         },
       }}
     />

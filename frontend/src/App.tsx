@@ -7,61 +7,73 @@ import PetDetailPage from "./pages/PetDetailPage";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1d4ed8",
-      light: "#3b82f6",
-      dark: "#1e3a8a",
+      main: "#1e40af", // Blue 800
+      light: "#3b82f6", // Blue 500
+      dark: "#1e3a8a", // Blue 900
     },
     secondary: {
-      main: "#60a5fa",
-      light: "#93c5fd",
-      dark: "#2563eb",
+      main: "#0ea5e9", // Sky 500
+      light: "#7dd3fc", // Sky 300
+      dark: "#0369a1", // Sky 700
     },
     background: {
-      default: "#f5f9ff",
-      paper: "#ffffff",
+      default: "transparent",
+      paper: "rgba(255, 255, 255, 0.9)",
     },
     text: {
-      primary: "#0f172a",
-      secondary: "#334155",
+      primary: "#1e293b", // Slate 800
+      secondary: "#475569", // Slate 600
     },
   },
   shape: {
-    borderRadius: 16,
+    borderRadius: 12,
   },
   typography: {
-    fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
+    fontFamily: "'Inter', 'Plus Jakarta Sans', sans-serif",
     h2: {
-      fontWeight: 700,
-      letterSpacing: "-0.02em",
+      fontWeight: 800,
+      letterSpacing: "-0.025em",
     },
     h3: {
       fontWeight: 700,
-      letterSpacing: "-0.02em",
+      letterSpacing: "-0.025em",
+    },
+    h5: {
+      fontWeight: 700,
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          scrollBehavior: "smooth",
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: {
-          border: "1px solid #dbeafe",
-          boxShadow: "0 10px 30px rgba(30, 64, 175, 0.08)",
-          backgroundImage: "none",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          border: "1px solid #dbeafe",
-          boxShadow: "0 8px 24px rgba(30, 64, 175, 0.08)",
-          backgroundImage: "none",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
         },
       },
     },
     MuiButton: {
       styleOverrides: {
-        containedPrimary: {
-          boxShadow: "none",
+        root: {
+          textTransform: "none",
+          fontWeight: 600,
+          padding: "8px 20px",
         },
       },
     },

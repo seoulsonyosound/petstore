@@ -63,19 +63,29 @@ const PetListPage: React.FC = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 5, mb: 6 }}>
       <Paper
+        elevation={0}
         sx={{
-          p: { xs: 3, md: 4 },
-          mb: 4,
-          background: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #3b82f6 100%)",
-          color: "#eff6ff",
-          border: "none",
+          p: { xs: 4, md: 6 },
+          mb: 5,
+          background: "rgba(30, 58, 138, 0.85)",
+          backdropFilter: "blur(8px)",
+          color: "#ffffff",
+          borderRadius: 4,
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Typography variant="h2" align="center" gutterBottom>
+        <Typography 
+          variant="h2" 
+          align="center" 
+          sx={{ 
+            fontWeight: 800,
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+            fontSize: { xs: "2.5rem", md: "3.5rem" }
+          }}
+        >
           Our Pets
-        </Typography>
-        <Typography align="center" sx={{ opacity: 0.9 }}>
-          Find your perfect companion with smart search and filters.
         </Typography>
       </Paper>
 

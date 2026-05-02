@@ -25,7 +25,12 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ type, availability, onTypeCha
           value={type}
           onChange={handleTypeChange}
           label="Pet Type"
-          sx={{ borderRadius: 3, backgroundColor: "#ffffff" }}
+          sx={{ 
+            borderRadius: 4, 
+            backgroundColor: "rgba(255, 255, 255, 0.6)",
+            "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.9)" },
+            "&.Mui-focused": { backgroundColor: "#ffffff" }
+          }}
         >
           <MenuItem value=""><em>All</em></MenuItem>
           <MenuItem value="DOG">Dog</MenuItem>
@@ -45,10 +50,17 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ type, availability, onTypeCha
         label="Available Only"
         sx={{
           m: 0,
-          px: 1,
-          borderRadius: 2,
-          backgroundColor: "#eff6ff",
-          border: "1px solid #bfdbfe",
+          px: 2,
+          py: 0.5,
+          borderRadius: 4,
+          backgroundColor: "rgba(239, 246, 255, 0.6)",
+          border: "1px solid rgba(191, 219, 254, 0.5)",
+          backdropFilter: "blur(4px)",
+          transition: "all 0.2s ease",
+          "&:hover": {
+            backgroundColor: "rgba(219, 234, 254, 0.8)",
+            borderColor: "primary.light",
+          }
         }}
       />
     </Box>
