@@ -1,50 +1,70 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+<sync_impact_report>
+- Version change: [TEMPLATE] → 1.0.0
+- List of modified principles:
+  - [PRINCIPLE_1_NAME] → I. Type-Safe Spring Boot Backend
+  - [PRINCIPLE_2_NAME] → II. Component-Based React Frontend
+  - [PRINCIPLE_3_NAME] → III. Persistent Relational Data
+  - [PRINCIPLE_4_NAME] → IV. Continuous Render Deployment
+  - [PRINCIPLE_5_NAME] → V. E-commerce Domain Integrity
+- Added sections: Technology Stack, Development Workflow
+- Removed sections: None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md: ✅ updated
+  - .specify/templates/spec-template.md: ✅ updated
+  - .specify/templates/tasks-template.md: ✅ updated
+- Follow-up TODOs: None
+</sync_impact_report>
+-->
+
+# petstore Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Type-Safe Spring Boot Backend
+Java Spring Boot MUST be used for all backend services. All APIs MUST be typed and documented using 
+Swagger/OpenAPI. Business logic MUST reside in the service layer, isolated from web and data 
+concerns to ensure testability and maintainability.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Component-Based React Frontend
+The frontend MUST be built with React 18+ using functional components and hooks. Tailwind CSS 
+MUST be used for layout and custom styling, while MUI (Material UI) MUST be used for complex UI 
+components and design system consistency.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Persistent Relational Data
+PostgreSQL is the source of truth for all transactional data. All schema changes MUST be managed 
+via versioned migrations. Relationships and constraints MUST be enforced at the database level to 
+ensure data integrity across the e-commerce platform.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Continuous Render Deployment
+The application MUST be architected for deployment on Render. Both frontend and backend MUST be 
+configured for automated, zero-downtime deployments. Environment-specific configuration MUST be 
+managed strictly via environment variables.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. E-commerce Domain Integrity
+The system MUST prioritize the integrity of the pet catalog, shopping cart, and order processing. 
+Transactional consistency is non-negotiable for order placement and inventory management to 
+prevent stock overselling and data corruption.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Stack
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Backend**: Java 17+, Spring Boot 3.x
+- **Frontend**: React 18+, TypeScript, Tailwind CSS 3.x, MUI 5.x
+- **Database**: PostgreSQL 15+
+- **Infrastructure**: Render
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- **Testing**: JUnit/Mockito for Backend, Jest/React Testing Library for Frontend.
+- **CI/CD**: Automated builds and tests on every pull request.
+- **Documentation**: Swagger/OpenAPI for API documentation.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution supersedes all other development practices in the petstore project.
+- Amendments require a version bump and documented rationale in the Sync Impact Report.
+- All implementation plans MUST include a 'Constitution Check' to ensure alignment with these principles.
+- Complexity MUST be justified and documented in implementation plans.
+- Use `README.md` for project-level guidance and `docs/` for detailed architectural documentation.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-05-01 | **Last Amended**: 2026-05-01

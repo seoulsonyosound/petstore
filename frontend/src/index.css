@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #eaf2ff;
+  background-image: url("https://img.freepik.com/free-vector/wild-fun-animal-paw-print-pattern-background-design-vector_1017-47618.jpg?semt=ais_hybrid&w=740&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
