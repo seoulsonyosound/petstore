@@ -30,4 +30,19 @@ public class PetController {
     public PetDTO getPetById(@PathVariable UUID id) {
         return petService.getPetById(id);
     }
+
+    @PostMapping
+    public PetDTO createPet(@RequestBody PetDTO petDTO) {
+        return petService.createPet(petDTO);
+    }
+
+    @PutMapping("/{id}")
+    public PetDTO updatePet(@PathVariable UUID id, @RequestBody PetDTO petDTO) {
+        return petService.updatePet(id, petDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePet(@PathVariable UUID id) {
+        petService.deletePet(id);
+    }
 }

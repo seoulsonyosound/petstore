@@ -4,13 +4,26 @@ import { Box, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Form
 interface FilterPanelProps {
   type: string;
   availability: boolean | null;
+  sort: string;
   onTypeChange: (type: string) => void;
   onAvailabilityChange: (availability: boolean | null) => void;
+  onSortChange: (sort: string) => void;
 }
 
-const FilterPanel: React.FC<FilterPanelProps> = ({ type, availability, onTypeChange, onAvailabilityChange }) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({ 
+  type, 
+  availability, 
+  sort,
+  onTypeChange, 
+  onAvailabilityChange,
+  onSortChange 
+}) => {
   const handleTypeChange = (event: SelectChangeEvent) => {
     onTypeChange(event.target.value as string);
+  };
+
+  const handleSortChange = (event: SelectChangeEvent) => {
+    onSortChange(event.target.value as string);
   };
 
   const handleAvailabilityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +32,22 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ type, availability, onTypeCha
 
   return (
     <Box display="flex" gap={2} alignItems="center" justifyContent="flex-end" flexWrap="wrap">
-      <FormControl variant="outlined" sx={{ minWidth: 160 }}>
+      <FormControl variant="outlined" sx={{ minWidth: 150 }}>
+        <InputLabel>Sort By</InputLabel>
+        <Select
+          value={sort}
+          onChange={handleSortChange}
+          label="Sort By"
+          sx={{ borderRadius: 4 }}
+        >
+          <MenuItem value="name,asc">Name (A-Z)</MenuItem>
+          <MenuItem value="name,desc">Name (Z-A)</MenuItem>
+          <MenuItem value="age,asc">Age (Youngest)</MenuItem>
+          <MenuItem value="age,desc">Age (Oldest)</MenuItem>
+          <MenuItem value="type,asc">Type</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" sx={{ minWidth: 150 }}>
         <InputLabel>Pet Type</InputLabel>
         <Select
           value={type}

@@ -55,6 +55,38 @@ public class PetService {
         return convertToDTO(pet);
     }
 
+    public PetDTO createPet(PetDTO petDTO) {
+        Pet pet = new Pet();
+        updatePetFromDTO(pet, petDTO);
+        Pet savedPet = petRepository.save(pet);
+        return convertToDTO(savedPet);
+    }
+
+    public PetDTO updatePet(UUID id, PetDTO petDTO) {
+        Pet pet = petRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pet not found with id: " + id));
+        updatePetFromDTO(pet, petDTO);
+        Pet updatedPet = petRepository.save(pet);
+        return convertToDTO(updatedPet);
+    }
+
+    public void deletePet(UUID id) {
+        if (!petRepository.existsById(id)) {
+            throw new RuntimeException("Pet not found with id: " + id);
+        }
+        petRepository.deleteById(id);
+    }
+
+    private void updatePetFromDTO(Pet pet, PetDTO dto) {
+        pet.setName(dto.getName());
+        pet.setType(dto.getType());
+        pet.setBreed(dto.getBreed());
+        pet.setAge(dto.getAge());
+        pet.setSex(dto.getSex());
+        pet.setAvailability(dto.getAvailability());
+        pet.setImageUrl(dto.getImageUrl());
+    }
+
     private PetDTO convertToDTO(Pet pet) {
         PetDTO dto = new PetDTO();
         dto.setId(pet.getId());
