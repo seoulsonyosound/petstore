@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme, Box } from "@mui/material";
 import PetListPage from "./pages/PetListPage";
 import PetDetailPage from "./pages/PetDetailPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 const theme = createTheme({
   palette: {
@@ -45,8 +46,14 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          overflowY: "scroll",
+        },
         body: {
           scrollBehavior: "smooth",
+          minHeight: "100vh",
+          margin: 0,
+          padding: 0,
         },
       },
     },
@@ -84,7 +91,25 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: -1,
+          backgroundImage: "url(\"https://img.freepik.com/premium-photo/pet-care-concept-various-pet-accessories-blue-background-flat-lay_154515-6900.jpg\")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "blur(4px)",
+          transform: "scale(1.1)",
+          pointerEvents: "none",
+        }}
+      />
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<PetListPage />} />
           <Route path="/pets/:id" element={<PetDetailPage />} />

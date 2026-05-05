@@ -76,30 +76,30 @@ const PetListPage: React.FC = () => {
     fetchStats();
   }, [fetchStats]);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handlePageChange = useCallback((event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    window.scrollTo(0, 0);
+  }, []);
 
-  const handleSearch = (value: string) => {
+  const handleSearch = useCallback((value: string) => {
     setSearch(value);
     setPage(0);
-  };
+  }, []);
 
-  const handleTypeChange = (value: string) => {
+  const handleTypeChange = useCallback((value: string) => {
     setType(value);
     setPage(0);
-  };
+  }, []);
 
-  const handleSortChange = (value: string) => {
+  const handleSortChange = useCallback((value: string) => {
     setSort(value);
     setPage(0);
-  };
+  }, []);
 
-  const handleAvailabilityChange = (value: boolean | null) => {
+  const handleAvailabilityChange = useCallback((value: boolean | null) => {
     setAvailability(value);
     setPage(0);
-  };
+  }, []);
 
   const handleAddPet = () => {
     setSelectedPet(null);
@@ -264,14 +264,25 @@ const PetListPage: React.FC = () => {
       
       {totalPages > 1 && (
         <Box display="flex" justifyContent="center" mt={4} mb={4}>
-          <Pagination 
-            count={totalPages} 
-            page={page + 1} 
-            onChange={handlePageChange} 
-            color="primary"
-            shape="rounded"
-            disabled={loading}
-          />
+          <Paper 
+            sx={{ 
+              p: 1.5, 
+              px: 3,
+              borderRadius: 4, 
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              backdropFilter: "blur(10px)",
+              display: "inline-flex"
+            }}
+          >
+            <Pagination 
+              count={totalPages} 
+              page={page + 1} 
+              onChange={handlePageChange} 
+              color="primary"
+              shape="rounded"
+              disabled={loading}
+            />
+          </Paper>
         </Box>
       )}
 
