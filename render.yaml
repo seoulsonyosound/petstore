@@ -4,7 +4,7 @@ services:
     name: petstore-backend
     runtime: java
     plan: free
-    rootDirectory: backend
+    rootDir: backend
     buildCommand: mvn clean install -DskipTests
     startCommand: java -jar target/petstore-0.0.1-SNAPSHOT.jar
     envVars:
@@ -25,7 +25,7 @@ services:
   - type: web
     name: petstore-frontend
     runtime: static
-    rootDirectory: frontend
+    rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
     envVars:
