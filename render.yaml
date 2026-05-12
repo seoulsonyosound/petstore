@@ -9,6 +9,8 @@ services:
       - key: PORT
         value: 8080
       - key: SPRING_DATASOURCE_URL
+        value: jdbc:${_INTERNAL_DB_URL}
+      - key: _INTERNAL_DB_URL
         fromDatabase:
           name: petstore-db
           property: connectionString
