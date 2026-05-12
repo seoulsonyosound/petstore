@@ -40,7 +40,11 @@ services:
     staticPublishPath: build
     envVars:
       - key: REACT_APP_API_BASE_URL
-        value: https://petstore-backend.onrender.com/alejos/api/v1
+        value: https://petstore-backend-ft2q.onrender.com/alejos/api/v1
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
 
 databases:
   - name: petstore-db
